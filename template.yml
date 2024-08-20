@@ -20,13 +20,6 @@ Parameters:
     Type: String
   InternetGatewayIG:
     Type: String
-  DBInstanceType:
-    Type: String
-  DBUsername:
-    Type: String
-  DBPassword:
-    Type: String
-    NoEcho: true
 
 Resources:
 
@@ -44,13 +37,3 @@ Resources:
         AvailabilityZone1: !Ref AvailabilityZone1
         AvailabilityZone2 : !Ref AvailabilityZone2
         InternetGatewayIG: !Ref InternetGatewayIG
-
-  NestedRDSStack:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: 'https://s3.amazonaws.com/worley-nc-deployment/rds.yml'
-      Parameters:
-        VPCName: !Ref VpcName
-        InstanceType: !Ref DBInstanceType
-        DBUsername: !Ref DBUsername
-        DBPassword: !Ref DBPassword
